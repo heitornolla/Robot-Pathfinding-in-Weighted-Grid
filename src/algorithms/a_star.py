@@ -14,6 +14,8 @@ def a_star(grid, start_coords, goal_coords):
     g_scores = { (start_cell.x, start_cell.y): 0 }
     opened_nodes = set()
 
+    time_step = 0
+
     while open_set:
         current_node = heapq.heappop(open_set)
         current_cell = current_node.cell
@@ -40,5 +42,9 @@ def a_star(grid, start_coords, goal_coords):
                     h=heuristic(neighbor, goal_cell)
                 )
                 heapq.heappush(open_set, new_node)
+                
+        
+        time_step+=1
+
 
     return None, float('inf'), opened_nodes

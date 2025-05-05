@@ -15,6 +15,6 @@ class Cell:
         elif self.terrain == TerrainType.GRASS:
             return 1.2
         elif self.terrain == TerrainType.MUD:
-            return 2
+            return 1.6
         elif self.terrain == TerrainType.TRAFFIC:
-            return 1 + time_step * 0.1
+            return min((1 + time_step * 0.05), 1.5)
