@@ -31,7 +31,7 @@ def a_star(grid, start_coords, goal_coords):
 
         for neighbor in grid.get_neighbors(current_cell):
             neighbor_coords = (neighbor.x, neighbor.y)
-            tentative_g = g_scores[current_coords] + neighbor.cost
+            tentative_g = g_scores[current_coords] + neighbor.compute_cost(time_step)
 
             if neighbor_coords not in g_scores or tentative_g < g_scores[neighbor_coords]:
                 g_scores[neighbor_coords] = tentative_g
