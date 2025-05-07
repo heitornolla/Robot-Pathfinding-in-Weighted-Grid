@@ -43,8 +43,6 @@ def a_star(grid, start_coords, goal_coords):
                 )
                 heapq.heappush(open_set, new_node)
                 
-        
         time_step+=1
-
 
     return None, float('inf'), opened_nodes

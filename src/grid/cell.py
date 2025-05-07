@@ -2,14 +2,17 @@ from src.grid.terrains.terrains import TerrainType
 
 
 class Cell:
-    def __init__(self, x, y, terrain):
+    """
+    Represents a single cell on the grid with a terrain type.
+    """
+    def __init__(self, x: int, y: int, terrain: str):
         self.x = x
         self.y = y
         self.terrain = terrain
         self.cost = self.compute_cost()
 
 
-    def compute_cost(self, time_step=0):
+    def compute_cost(self, time_step: int=0) -> float:
         if self.terrain == TerrainType.WATER:
             return 1
         elif self.terrain == TerrainType.GRASS:

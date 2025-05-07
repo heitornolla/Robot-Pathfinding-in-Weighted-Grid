@@ -1,6 +1,13 @@
 # Node used in the A* algorithm
-class Node:
-    def __init__(self, cell, parent=None, g=0, h=0):
+from typing import Optional
+from grid.cell import Cell
+
+
+class Node:    
+    """
+    Node class used in pathfinding algorithms.
+    """
+    def __init__(self, cell: Cell, parent: Optional['Node'] = None, g: float = 0, h: float = 0):
         self.cell = cell
         self.parent = parent
         self.g = g  # Cost from start to this node

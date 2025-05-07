@@ -1,8 +1,12 @@
+from typing import List
 from src.grid.cell import Cell
 
 
 class Grid:
-    def __init__(self, terrain_map):
+    """
+    Grid representation with terrain-based cells.
+    """
+    def __init__(self, terrain_map: List[List[str]]):
         self.width = len(terrain_map[0])
         self.height = len(terrain_map[1])
         self.cells = [
@@ -11,11 +15,11 @@ class Grid:
         ]
 
 
-    def get_cell(self, x, y):
+    def get_cell(self, x: int, y: int) -> Cell:
         return self.cells[y][x]
 
 
-    def get_neighbors(self, cell):
+    def get_neighbors(self, cell: Cell) -> List[Cell]:
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         neighbors = []
         for dx, dy in directions:
