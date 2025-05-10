@@ -1,6 +1,6 @@
 # Node used in the A* algorithm
 from typing import Optional
-from grid.cell import Cell
+from src.grid.cell import Cell
 
 
 class Node:    

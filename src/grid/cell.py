@@ -20,4 +20,6 @@ class Cell:
         elif self.terrain == TerrainType.MUD:
             return 1.6
         elif self.terrain == TerrainType.TRAFFIC:
-            return min((1 + time_step * 0.05), 1.5)
+            # cost will be 1.5 after 200 time steps
+            # avg time steps on 50x50 grid is 400
+            return min((1 + time_step * 0.0025), 1.5)
