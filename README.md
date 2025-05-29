@@ -1,6 +1,8 @@
 # Robot-Pathfinding-in-Weighted-Grid
 
-[![Open in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-brightgreen)](https://drive.google.com/file/d/1ErvPaWwRFBg_ykifU9-d-tz22iybGP6a/view?usp=sharing)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github.com/heitornolla/Robot-Pathfinding-in-Weighted-Grid/blob/main/jupyter-notebook/colab-notebook.ipynb)
+[![Read in Overleaf](https://img.shields.io/badge/Open%20in-Overleaf-brightgreen)](https://drive.google.com/file/d/1ErvPaWwRFBg_ykifU9-d-tz22iybGP6a/view?usp=sharing)
+
 
 # Overview
 
