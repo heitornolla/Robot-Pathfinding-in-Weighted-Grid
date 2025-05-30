@@ -16,3 +16,11 @@ class Node:
 
     def __lt__(self, other):
         return self.f < other.f
+
+    def __repr__(self):
+        representation = {
+            "x, y": [self.cell.x, self.cell.y],
+            "total_cost": self.f
+        }
+        
+        return representation

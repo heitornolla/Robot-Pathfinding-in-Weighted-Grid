@@ -27,3 +27,8 @@ class Grid:
             if 0 <= nx < self.width and 0 <= ny < self.height:
                 neighbors.append(self.get_cell(nx, ny))
         return neighbors
+    
+    def __repr__(self):
+        grid_to_string = f"{self.width} x {self.height} grid"
+
+        return grid_to_string

@@ -23,3 +23,11 @@ class Cell:
             # cost will be 1.5 after 200 time steps
             # avg time steps on 50x50 grid is 400
             return min((1 + time_step * 0.0025), 1.5)
+
+    def __repr__(self):
+        representation = {
+            "x, y": [self.x, self.y],
+            "terrain": self.terrain
+        }
+        
+        return representation

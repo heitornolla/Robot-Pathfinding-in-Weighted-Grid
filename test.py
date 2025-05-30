@@ -14,7 +14,7 @@ from src.utils import print_path_with_open
 # Showcase open nodes while debugging the code
 
 terrain_types = ['W', 'G', 'M', 'T']
-terrain_weights = [0.1, 0.4, 0.25, 0.15]  
+terrain_weights = [0.25, 0.25, 0.25, 0.25]  
 
 terrain_map = [
     [random.choices(terrain_types, terrain_weights)[0] for _ in range(50)]
@@ -23,7 +23,7 @@ terrain_map = [
 
 grid = Grid(terrain_map)
 start = (0, 0)
-goal = (38, 46)
+goal = (49, 49)
 
 
 def test_algorithms(grid, start, goal):
@@ -49,4 +49,4 @@ if __name__ == "__main__":
     results = test_algorithms(grid, start, goal)
 
     for name, data in results.items():
-        print(f"{name}: Cost={data['cost']:.2f}, Path Length={data['path_length']}, Opened={data['nodes_opened']}")
+        print(f"{name}: Cost={data['cost']:.2f}, Opened={data['nodes_opened']}")
