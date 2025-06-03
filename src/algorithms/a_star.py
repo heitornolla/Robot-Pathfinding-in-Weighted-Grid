@@ -22,6 +22,8 @@ def a_star(grid, start_coords, goal_coords):
         current_coords = (current_cell.x, current_cell.y)
         opened_nodes.add(current_coords)
 
+        time_step+=1
+
         if current_coords == (goal_cell.x, goal_cell.y):
             path = []
             while current_node:
@@ -43,6 +45,5 @@ def a_star(grid, start_coords, goal_coords):
                 )
                 heapq.heappush(open_set, new_node)
                 
-        time_step+=1
 
     return None, float('inf'), opened_nodes

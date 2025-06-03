@@ -13,11 +13,15 @@ def greedy_best_first(grid, start_coords, goal_coords):
     opened_nodes = set()
     visited = set()
 
+    time_step = 0
+
     while open_set:
         current_node = heapq.heappop(open_set)
         current_cell = current_node.cell
         current_coords = (current_cell.x, current_cell.y)
         opened_nodes.add(current_coords)
+
+        time_step += 1
 
         if current_coords == (goal_cell.x, goal_cell.y):
             path = []
@@ -25,7 +29,7 @@ def greedy_best_first(grid, start_coords, goal_coords):
                 path.append((current_node.cell.x, current_node.cell.y))
                 current_node = current_node.parent
 
-            total_cost = sum(grid.get_cell(x, y).compute_cost(0) for (x, y) in path)
+            total_cost = sum(grid.get_cell(x, y).compute_cost(time_step) for (x, y) in path)
             return path[::-1], total_cost, opened_nodes
 
 
