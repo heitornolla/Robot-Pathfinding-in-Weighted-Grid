@@ -10,11 +10,8 @@ from src.grid.grid import Grid
 from src.utils import print_path_with_open
 
 
-# Explain on 5x5 grid, demonstrate on 20x20 and 50x50
-# Showcase open nodes while debugging the code
-
 terrain_types = ['W', 'G', 'M', 'T']
-terrain_weights = [0.10, 0.4, 0.25, 0.15]  
+terrain_weights = [0.25, 0.25, 0.25, 0.25]  
 
 terrain_map = [
     [random.choices(terrain_types, terrain_weights)[0] for _ in range(50)]
