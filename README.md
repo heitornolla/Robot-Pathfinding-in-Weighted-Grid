@@ -13,6 +13,6 @@ This work addresses the path planning problem for a robot in a weighted grid, ta
 
 ## Aside
 
-If you're curious as to how the nodes expand and the order in which they're visited, you can now see it clearly on this notebook:
+If you're curious as to how the A* algorithm expands the nodes and the order in which they're visited, you can now see it clearly on this notebook:
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/heitornolla/Robot-Pathfinding-in-Weighted-Grid/blob/main/jupyter-notebook/iterative_printing.ipynb)
