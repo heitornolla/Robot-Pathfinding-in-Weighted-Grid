@@ -11,7 +11,7 @@ from src.utils import print_path_with_open
 
 
 terrain_types = ['W', 'G', 'M', 'T']
-terrain_weights = [0.25, 0.25, 0.25, 0.25]  
+terrain_weights = [0.1, 0.4, 0.25, 0.15]  
 
 terrain_map = [
     [random.choices(terrain_types, terrain_weights)[0] for _ in range(50)]
