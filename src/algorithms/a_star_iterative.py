@@ -2,7 +2,7 @@ import heapq
 
 from src.grid.node import Node
 from src.heuristic import heuristic
-from src.utils import reconstruct_path
+from src.utils import print_path_with_open, reconstruct_path
 
 def a_star(grid, start_coords, goal_coords):
     start_cell = grid.get_cell(*start_coords)
@@ -28,6 +28,14 @@ def a_star(grid, start_coords, goal_coords):
         closed_coords.add(current_coords)
 
         time_step+=1
+
+        path = reconstruct_path(current_node)
+        
+        # Print current visual state
+        print("-"*40)
+        print(f'{time_step} exec')
+        print_path_with_open(grid, path, open_coords)
+        print()
 
         if current_coords == goal_coords:
             path = reconstruct_path(current_node)

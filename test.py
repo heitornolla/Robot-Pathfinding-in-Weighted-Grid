@@ -11,11 +11,14 @@ from src.utils import print_path_with_open
 
 
 terrain_types = ['W', 'G', 'M', 'T']
-terrain_weights = [0.1, 0.4, 0.25, 0.15]  
+terrain_weights = [0.25, 0.25, 0.25, 0.25]
+
+width = 50
+height = 50
 
 terrain_map = [
-    [random.choices(terrain_types, terrain_weights)[0] for _ in range(50)]
-    for _ in range(50)
+    [random.choices(terrain_types, terrain_weights)[0] for _ in range(width)]
+    for _ in range(height)
 ]
 
 grid = Grid(terrain_map)
@@ -39,6 +42,9 @@ def test_algorithms(grid, start, goal):
             "cost": cost,
             "nodes_opened": len(opened)
         }
+        print_path_with_open(grid, path, opened)
+        print()
+    
     return results
 
 

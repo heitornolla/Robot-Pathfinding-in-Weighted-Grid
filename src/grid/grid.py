@@ -4,11 +4,13 @@ from src.grid.cell import Cell
 
 class Grid:
     """
-    Grid representation with terrain-based cells.
+    Grid representation with terrain-based cells.D
     """
     def __init__(self, terrain_map: List[List[str]]):
         self.width = len(terrain_map[0])
-        self.height = len(terrain_map[1])
+        self.height = len(terrain_map)
+        print(f'altura {self.height}')
+        print(f'largura {self.width}')
         self.cells = [
             [Cell(x, y, terrain_map[y][x]) for x in range(self.width)]
             for y in range(self.height)
