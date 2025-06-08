@@ -10,7 +10,7 @@ def a_star(grid, start_coords, goal_coords):
 
     open_heap = []
     heapq.heappush(open_heap, Node(start_cell, g=0, h=heuristic(start_cell, goal_cell)))
-    g_scores = { (start_cell.x, start_cell.y): 0 }
+    g_scores = { start_coords: 0 }
 
     open_coords = set()
     closed_coords = set()
