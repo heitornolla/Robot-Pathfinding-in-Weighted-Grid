@@ -1,5 +1,6 @@
 import random
-random.seed(42)
+seed = 42
+random.seed(seed)
 
 from src.algorithms.a_star import a_star
 from src.algorithms.bfs import breadth_first_search
@@ -7,16 +8,16 @@ from src.algorithms.dfs import depth_first_search
 from src.algorithms.greedy_best_first import greedy_best_first
 
 from src.grid.grid import Grid
-from src.utils import print_path_with_open
+from src.utils import generate_terrain_map, print_path_with_open
 
 
 terrain_types = ['W', 'G', 'M', 'T']
-terrain_weights = [0.1, 0.4, 0.25, 0.15]  
+terrain_weights = [0.25, 0.25, 0.25, 0.25]
 
-terrain_map = [
-    [random.choices(terrain_types, terrain_weights)[0] for _ in range(50)]
-    for _ in range(50)
-]
+width = 50
+height = 50
+
+terrain_map = generate_terrain_map(width, height, terrain_types, terrain_weights, seed)
 
 grid = Grid(terrain_map)
 start = (0, 0)
@@ -33,12 +34,19 @@ def test_algorithms(grid, start, goal):
 
     results = {}
     for name, algo in algorithms.items():
-        path, cost, opened = algo(grid, start, goal)
+        path, cost, opened_coords = algo(grid, start, goal)
         results[name] = {
             "path_length": len(path),
             "cost": cost,
-            "nodes_opened": len(opened)
+            "nodes_opened": len(opened_coords)
         }
+        print(f'{name} algorithm:')
+        print_path_with_open(grid, path, opened_coords)
+        print(f'Total cost: {cost:.2f}')
+        print(f'Path length: {len(path)}')
+        print(f'Opened {len(opened_coords)} nodes during the search.')
+        print()
+    
     return results
 
 
@@ -46,4 +54,4 @@ if __name__ == "__main__":
     results = test_algorithms(grid, start, goal)
 
     for name, data in results.items():
-        print(f"{name}: Cost={data['cost']:.2f}, Opened={data['nodes_opened']}")
+        print(f"{name}: Cost={data['cost']:.2f}, Open Nodes={data['nodes_opened']}")
