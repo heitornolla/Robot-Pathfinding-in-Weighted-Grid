@@ -2,7 +2,6 @@ import random
 seed = 42
 random.seed(seed)
 
-from src.algorithms.a_star_iterative import a_star_iterative
 from src.algorithms.a_star import a_star
 from src.algorithms.bfs import breadth_first_search
 from src.algorithms.dfs import depth_first_search
@@ -15,19 +14,19 @@ from src.utils import generate_terrain_map, print_path_with_open
 terrain_types = ['W', 'G', 'M', 'T']
 terrain_weights = [0.25, 0.25, 0.25, 0.25]
 
-width = 5
-height = 5
+width = 50
+height = 50
 
 terrain_map = generate_terrain_map(width, height, terrain_types, terrain_weights, seed)
 
 grid = Grid(terrain_map)
 start = (0, 0)
-goal = (4, 4)
+goal = (49, 49)
 
 
 def test_algorithms(grid, start, goal):
     algorithms = {
-        "A*": a_star_iterative,
+        "A*": a_star,
         "Greedy Best-First": greedy_best_first,
         "Breadth-First Search": breadth_first_search,
         "Depth-First Search": depth_first_search
