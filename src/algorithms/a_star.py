@@ -12,7 +12,8 @@ def a_star(grid, start_coords, goal_coords):
     heapq.heappush(open_heap, Node(start_cell, g=0, h=heuristic(start_cell, goal_cell)))
     g_scores = { start_coords: 0 }
 
-    open_coords = set()
+    opened_coords = set()
+    opened_coords.add(start_coords)
     closed_coords = set()
 
     time_step = 0
@@ -31,7 +32,7 @@ def a_star(grid, start_coords, goal_coords):
 
         if current_coords == goal_coords:
             path = reconstruct_path(current_node)
-            return path, g_scores[goal_coords], open_coords
+            return path, g_scores[goal_coords], opened_coords
 
         for neighbor in grid.get_neighbors(current_cell):
             neighbor_coords = (neighbor.x, neighbor.y)
@@ -49,7 +50,7 @@ def a_star(grid, start_coords, goal_coords):
                     h=heuristic(neighbor, goal_cell)
                 )
                 heapq.heappush(open_heap, new_node)
-                open_coords.add(neighbor_coords)
+                opened_coords.add(neighbor_coords)
                 
 
-    return None, float('inf'), open_coords
+    return None, float('inf'), opened_coords

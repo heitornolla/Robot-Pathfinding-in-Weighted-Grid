@@ -1,3 +1,12 @@
+import random
+def generate_terrain_map(width, height, terrain_types, terrain_weights, seed):
+    random.seed(seed)
+    terrain_map = [
+        [random.choices(terrain_types, terrain_weights)[0] for _ in range(width)]
+        for _ in range(height)
+    ]
+    return terrain_map
+
 def reconstruct_path(node):
     path = []
     while node:

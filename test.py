@@ -1,34 +1,33 @@
 import random
-random.seed(103)
+seed = 42
+random.seed(seed)
 
+from src.algorithms.a_star_iterative import a_star_iterative
 from src.algorithms.a_star import a_star
 from src.algorithms.bfs import breadth_first_search
 from src.algorithms.dfs import depth_first_search
 from src.algorithms.greedy_best_first import greedy_best_first
 
 from src.grid.grid import Grid
-from src.utils import print_path, print_path_with_open
+from src.utils import generate_terrain_map, print_path_with_open
 
 
 terrain_types = ['W', 'G', 'M', 'T']
 terrain_weights = [0.25, 0.25, 0.25, 0.25]
 
-width = 50
-height = 50
+width = 5
+height = 5
 
-terrain_map = [
-    [random.choices(terrain_types, terrain_weights)[0] for _ in range(width)]
-    for _ in range(height)
-]
+terrain_map = generate_terrain_map(width, height, terrain_types, terrain_weights, seed)
 
 grid = Grid(terrain_map)
-start = (42, 45)
-goal = (0, 0)
+start = (0, 0)
+goal = (4, 4)
 
 
 def test_algorithms(grid, start, goal):
     algorithms = {
-        "A*": a_star,
+        "A*": a_star_iterative,
         "Greedy Best-First": greedy_best_first,
         "Breadth-First Search": breadth_first_search,
         "Depth-First Search": depth_first_search
@@ -36,17 +35,17 @@ def test_algorithms(grid, start, goal):
 
     results = {}
     for name, algo in algorithms.items():
-        path, cost, open_coords = algo(grid, start, goal)
+        path, cost, opened_coords = algo(grid, start, goal)
         results[name] = {
             "path_length": len(path),
             "cost": cost,
-            "nodes_opened": len(open_coords)
+            "nodes_opened": len(opened_coords)
         }
         print(f'{name} algorithm:')
-        print_path_with_open(grid, path, open_coords)
+        print_path_with_open(grid, path, opened_coords)
         print(f'Total cost: {cost:.2f}')
         print(f'Path length: {len(path)}')
-        print(f'Opened {len(open_coords)} nodes during the search.')
+        print(f'Opened {len(opened_coords)} nodes during the search.')
         print()
     
     return results
